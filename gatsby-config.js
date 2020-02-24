@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `demix`,
+    description: `Seperate your tracks seamlessly. Demix retrieves vocals, bass, drums, and others seperated from a finalized mix.`,
+    author: `@arturk`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

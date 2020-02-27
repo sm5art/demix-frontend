@@ -8,11 +8,15 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
+import { Layout } from 'antd';
 
-import Header from "./header"
-//import "./layout.css"
+import Head from "./header"
+import Foot from './footer'
+import Container from './container'
 
-const Layout = ({ children }) => {
+const { Header, Footer, Content } = Layout;
+
+const LayoutS = ({ children, isLoggedIn }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -22,17 +26,17 @@ const Layout = ({ children }) => {
       }
     }
   `)
-
   return (
-    <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      {children}
-    </>
+    <Layout style={{minHeight:'100vh'}}>
+      <Header><Container><Head siteTitle={data.site.siteMetadata.title} isLoggedIn={isLoggedIn}/></Container></Header>
+      <Content><Container>{children}</Container></Content>
+      <Footer><Container><Foot/></Container></Footer>
+    </Layout>
   )
 }
 
-Layout.propTypes = {
+LayoutS.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
-export default Layout
+export default LayoutS

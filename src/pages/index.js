@@ -1,18 +1,28 @@
-import React from "react"
-import { Link } from "gatsby";
-import { Button, Upload, Icon } from 'antd';
+import React from "react";
+import { Button } from 'antd';
 
-import Layout from "../components/layout"
-import UploadContainer from '../components/upload';
-import SEO from "../components/seo"
+import Layout from "../components/layout";
+import Jumbotron from '../components/jumbotron';
+import SEO from "../components/seo";
 
+class IndexPage extends React.Component {
+  constructor(props, context) {
+    super(props, context);
+  }
 
-const IndexPage = ()=> 
-(<Layout>
-    <SEO title="Home" />
-    <UploadContainer/>
-  </Layout>
-);
+  componentDidMount() {
+    if(window.localStorage.getItem('access')){
+      window.location.replace('/upload');
+    }
+  }
 
-
+  render () {
+    return (
+      <Layout>
+        <SEO title="Home" />
+        <Jumbotron/>
+      </Layout>
+    );
+  } 
+}
 export default IndexPage

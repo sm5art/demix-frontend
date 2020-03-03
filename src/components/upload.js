@@ -7,7 +7,7 @@ import { isClient } from '../utils/client';
 const getToken = () => window.localStorage.getItem('access')
 
 const props = (access) => ({
-    action: API_BASE,
+    action: `${API_BASE}/post_file`,
     method:'post',
     onChange: (file)=>{
       if(file.file.response)

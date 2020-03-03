@@ -6,7 +6,7 @@ import { Row, Col, Avatar, Button, Popover } from 'antd';
 import { grey } from '../utils/colors';
 import { rhythm } from '../utils/typography';
 
-const LINK_MARGIN = 0.9;
+const LINK_MARGIN = 0.5;
 
 const content = (
   <div>

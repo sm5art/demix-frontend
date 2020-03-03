@@ -13,6 +13,7 @@ const h1textStyle = {
 
 const Jumbotron = () => (
     <div>
+        <h1 style={h1textStyle}>Empower your DJ/sample workflow with state of the art AI</h1>
         <h1 style={h1textStyle}>Isolate vocals/drums/bass/piano from any final mix</h1>
         <p>
             login with google to upload your .mp3/.wav

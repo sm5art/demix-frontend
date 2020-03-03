@@ -2,6 +2,9 @@ import React from "react"
 
 import { Button, Upload, Icon } from 'antd';
 import { API_BASE } from '../constants';
+import { isClient } from '../utils/client';
+
+const getToken = () => window.localStorage.getItem('access')
 
 const props = (access) => ({
     action: API_BASE,
@@ -11,7 +14,7 @@ const props = (access) => ({
         window.open(`${API_BASE}/result/${file.file.response.data_id}`)
     },
     headers: {
-      token: window.localStorage.getItem('access') || access
+      token: access || (isClient ? getToken() : null )
     }
   })
 const UploadContainer = ({access}) => 

@@ -21,7 +21,7 @@ class UploadPage extends React.Component {
       window.localStorage.setItem('access', vars['access'])
       this.setState({access: vars['access']})
     }
-    if(!window.localStorage.getItem('access')){
+    if(!(window.localStorage.getItem('access') || this.state.access)){
       window.location.replace('/');
     }
   }

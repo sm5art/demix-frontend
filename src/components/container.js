@@ -4,8 +4,8 @@ import { rhythm } from '../utils/typography';
 
 const PAGE_WIDTH = 30;
 
-const Container = ({children}) => (
-    <div style={{margin: 'auto', maxWidth: rhythm(PAGE_WIDTH)}}>
+const Container = ({children, style}) => (
+    <div style={{margin: 'auto', maxWidth: rhythm(PAGE_WIDTH), ...style}}>
         {children}
     </div>
 );

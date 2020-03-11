@@ -6,7 +6,8 @@ import { Row, Col, Avatar, Button, Popover } from 'antd';
 import { grey } from '../utils/colors';
 import { rhythm } from '../utils/typography';
 
-const LINK_MARGIN = 0.5;
+const LINK_MARGIN_TOP = 0.5;
+const LINK_MARGIN_LEFT = 0.5;
 
 const content = (
   <div>
@@ -27,7 +28,7 @@ const Header = ({ siteTitle, isLoggedIn }) => (
   <header >
     <Row>
       <Col span={7}>
-        <h1 style={{color: grey[0], marginTop:rhythm(LINK_MARGIN)}} >
+        <h1 style={{color: grey[0], marginTop:rhythm(LINK_MARGIN_TOP), paddingLeft: rhythm(LINK_MARGIN_LEFT)}} >
             {siteTitle}
         </h1>
       </Col>

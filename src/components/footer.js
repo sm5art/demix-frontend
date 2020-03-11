@@ -1,14 +1,13 @@
 import React from 'react';
 
 import { Row, Col } from 'antd';
+import { rhythm } from '../utils/typography';
 
 
 const Footer = () => (
-    <footer>
-        <Row>
-            <Col span={3}>{(new Date()).getFullYear()} ©</Col>
-            <Col offset={24-3-2} span={2}><a href="mailto:contactdemix@gmail.com">contact</a></Col>      
-        </Row>
+    <footer style={{textAlign: 'center'}}>
+            <Row><a href="mailto:contactdemix@gmail.com">contact</a></Row>      
+            <Row>{(new Date()).getFullYear()} ©</Row>
     </footer>
 );
 

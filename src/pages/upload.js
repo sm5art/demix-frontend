@@ -2,6 +2,7 @@ import React from "react"
 
 import Layout from "../components/layout"
 import UploadContainer from '../components/upload';
+import FileList from '../components/FileList';
 import SEO from "../components/seo"
 import { getUrlVars } from '../utils/url';
 import { rhythm } from '../utils/typography';
@@ -31,6 +32,7 @@ class UploadPage extends React.Component {
         <SEO title="Upload a file" />
         <div style={{paddingTop:rhythm(0.5)}}>
           <UploadContainer access={this.state.access}/>
+          <FileList/>
         </div>
       </Layout>
     );

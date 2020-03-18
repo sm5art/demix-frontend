@@ -13,11 +13,9 @@ import { Layout } from 'antd';
 import Head from "./header"
 import Foot from './footer'
 import Container from './container'
-import { rhythm } from '../utils/typography';
+import theme from '../theme';
 
 const { Header, Footer, Content } = Layout;
-
-const CONTAINER_PADDING = 0.5
 
 const LayoutS = ({ children, isLoggedIn }) => {
   const data = useStaticQuery(graphql`
@@ -31,9 +29,9 @@ const LayoutS = ({ children, isLoggedIn }) => {
   `)
   return (
     <Layout style={{minHeight:'100vh'}}>
-      <Header style={{padding: 0}}><Container><Head siteTitle={data.site.siteMetadata.title} isLoggedIn={isLoggedIn}/></Container></Header>
+      <Header style={{padding: 0,}}><Container style={{paddingLeft:theme.spacing.medium, paddingRight:theme.spacing.medium}}><Head siteTitle={data.site.siteMetadata.title} isLoggedIn={isLoggedIn}/></Container></Header>
       <Content>
-        <Container style={{paddingLeft:rhythm(CONTAINER_PADDING), paddingRight:rhythm(CONTAINER_PADDING)}}>{children}</Container>
+        {children}
       </Content>
       <Footer style={{padding: 0}}><Container><Foot/></Container></Footer>
     </Layout>

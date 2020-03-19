@@ -1,8 +1,8 @@
 import React from "react"
+import { navigate } from 'gatsby';
 
 import Layout from "../components/layout"
 import UploadContainer from '../components/upload';
-import FileList from '../components/FileList';
 import SEO from "../components/seo"
 import { getUrlVars } from '../utils/url';
 import { rhythm } from '../utils/typography';
@@ -23,16 +23,15 @@ class UploadPage extends React.Component {
       this.setState({access: vars['access']})
     }
     if(!(window.localStorage.getItem('access') || this.state.access)){
-      window.location.replace('/');
+      navigate('/');
     }
   }
 
   render() { 
-    return  (<Layout isLoggedIn={true}>
+    return  (<Layout isLoggedIn>
         <SEO title="Upload a file" />
         <div style={{paddingTop:rhythm(0.5)}}>
           <UploadContainer access={this.state.access}/>
-          <FileList/>
         </div>
       </Layout>
     );

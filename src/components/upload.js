@@ -2,24 +2,33 @@ import React from "react"
 
 import { Button, Upload, Icon, Alert } from 'antd';
 import { API_BASE } from '../constants';
-import { isClient } from '../utils/client';
+import getToken from '../utils/auth';
 import { sleep } from "../utils/promise";
 
-const getToken = () => window.localStorage.getItem('access')
 const ERROR_POPUP_DURATION = 3000;
 
 const props = (access, onError) => ({
     action: `${API_BASE}/post_file`,
     method:'post',
-    onChange: (file)=>{
-      if(file.file.response && file.file.response.data_id)
-        window.open(`${API_BASE}/result/${file.file.response.data_id}`)
-      else if (file.file.response && file.file.response.error){
-        onError(file.file.response.error).then();
+    multiple: true,
+    onChange: (info)=>{
+      const { status } = info.file;
+      if (status !== 'uploading') {
+        console.log('uploading')
+      }
+      if (status === 'done') {
+        console.log('done')
+      } else if (status === 'error') {
+        console.log('error')
+      }
+      if(info.file.response && info.file.response.data_id)
+        window.open(`${API_BASE}/result/${info.file.response.data_id}`)
+      else if (info.file.response && info.file.response.error){
+        onError(info.file.response.error).then();
       }
     },
     headers: {
-      token: access || (isClient ? getToken() : null )
+      token: access || getToken()
     }
   })
 
@@ -48,8 +57,5 @@ class UploadContainer extends React.Component {
     </Upload>);
   }   
 }
-
-
-
 
 export default UploadContainer;

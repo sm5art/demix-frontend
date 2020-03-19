@@ -3,23 +3,21 @@ import React from 'react';
 import { API_BASE } from '../constants';
 import { sleep } from '../utils/promise';
 import { rhythm } from '../utils/typography';
-import { isClient } from '../utils/client';
+import getToken from '../utils/auth';
 
 const WAIT = 1000;
 const TOP_MARGIN = 0.7;
 
-const getToken = () => window.localStorage.getItem('access')
 
 const getFilesForUser = () => {
     return new Promise((res, rej) => {
-        const token = isClient ? getToken() : null;
+        const token = getToken();
         if(!token) rej();
         fetch(API_BASE+'/files', {
             method: 'GET',
             headers: {token}
         }).then(response=>response.json()).then(res).catch(rej)
-    });
-    
+    });   
 }
 
 class FileList extends React.Component {

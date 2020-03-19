@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@ant-design/icons": "^4.0.3",
     "animate.css": "^3.7.2",
     "antd": "^3.26.11",
     "gatsby": "^2.19.7",

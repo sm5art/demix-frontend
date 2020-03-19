@@ -1,3 +1,13 @@
-import { API_BASE } from '../constants';
+import { navigate } from 'gatsby';
 
-export const login = () => window.location.replace(`${API_BASE}/login`);
+import { API_BASE } from '../constants';
+import getToken from '../utils/auth';
+
+export const login = () => {
+    if(getToken()) {
+        navigate('/upload');
+    }
+    else {
+        window.location.replace(`${API_BASE}/login`);
+    }
+}

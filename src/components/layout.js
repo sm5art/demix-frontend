@@ -32,7 +32,7 @@ const LayoutS = ({ children, isLoggedIn })=> {
   return (
     <Layout style={{minHeight:'100vh'}}>
       <Header style={{padding: 0,}}>
-        <Container style={{paddingLeft:theme.spacing.medium, paddingRight:theme.spacing.medium}}>
+        <Container style={{paddingLeft:theme.spacing.small, paddingRight:theme.spacing.small}}>
           <Head siteTitle={data.site.siteMetadata.title} isLoggedIn={isLoggedIn}/>
         </Container>
       </Header>

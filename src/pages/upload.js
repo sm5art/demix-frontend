@@ -1,41 +1,43 @@
 import React from "react"
 import { navigate } from 'gatsby';
+import { connect } from 'react-redux';
 
 import Layout from "../components/layout"
 import UploadContainer from '../components/upload';
+import Container from '../components/Container';
 import SEO from "../components/seo"
+import { login } from '../redux/auth/actions';
 import { getUrlVars } from '../utils/url';
-import { rhythm } from '../utils/typography';
+import theme from '../theme';
 
 
 class UploadPage extends React.Component {
-  state = {
-    access: null,
-  }
   constructor(props, context){
     super(props, context);
   }
 
   componentDidMount() {
     const vars = getUrlVars();
+    const { login, token } = this.props;
     if(vars['access']) {
-      window.localStorage.setItem('access', vars['access'])
-      this.setState({access: vars['access']})
+      login(vars['access']);
     }
-    if(!(window.localStorage.getItem('access') || this.state.access)){
+    else if(!token){
       navigate('/');
     }
   }
 
   render() { 
-    return  (<Layout isLoggedIn>
+    return  (
+      <Layout isLoggedIn>
         <SEO title="Upload a file" />
-        <div style={{paddingTop:rhythm(0.5)}}>
-          <UploadContainer access={this.state.access}/>
-        </div>
+        <Container style={{paddingLeft: theme.spacing.medium, paddingRight: theme.spacing.medium}}>
+          <UploadContainer style={{marginTop: theme.spacing.medium}}/>
+        </Container>
       </Layout>
     );
   }
 }
 
-export default UploadPage;
+const connectDispatch = (dispatch) => ({login:(token)=>dispatch(login(token))})
+export default connect(state=>({token: state.auth.token}), connectDispatch)(UploadPage);

@@ -7,3 +7,5 @@
 import 'antd/dist/antd.css';
 import 'animate.css';
 // You can delete this file if you're not using it
+import wrapWithProvider from './src/wrapProvider';
+export const wrapRootElement = wrapWithProvider

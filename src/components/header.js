@@ -2,8 +2,10 @@ import { Link, navigate } from "gatsby";
 import PropTypes from "prop-types";
 import React from "react";
 import { Row, Col, Avatar, Button, Popover } from 'antd';
+import { useDispatch } from 'react-redux';
 
 import { grey } from '../utils/colors';
+import { logout } from '../redux/auth/actions';
 import { login } from '../utils/login';
 import theme from '../theme';
 
@@ -33,17 +35,18 @@ class Header extends React.Component {
   }
 }
 
-const ProfileContent = (
+const ProfileContent = () => {
+  const dispatch = useDispatch();
+  return (
   <div>
     <Button onClick={()=>{
-      window.localStorage.removeItem('access');
-      window.location.replace('/');
+      dispatch(logout());
+      navigate('/');
     }} type="primary">Log out</Button>
-  </div>
-);
+  </div>)};
 
 const AvatarS = () => 
-  (<Popover placement="bottom" content={ProfileContent} trigger="click">
+  (<Popover placement="bottom" content={ProfileContent()} trigger="click">
     <Avatar style={{marginLeft: theme.spacing.medium}} size="large" icon="user" />
   </Popover>);
 

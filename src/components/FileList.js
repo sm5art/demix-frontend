@@ -1,40 +1,24 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-import { API_BASE } from '../constants';
-import { sleep } from '../utils/promise';
-import { rhythm } from '../utils/typography';
-import getToken from '../utils/auth';
+import theme from '../theme';
+import { files } from '../redux/api/actions';
+import { getFilesForUser } from '../api';
 
-const WAIT = 1000;
-const TOP_MARGIN = 0.7;
-
-
-const getFilesForUser = () => {
-    return new Promise((res, rej) => {
-        const token = getToken();
-        if(!token) rej();
-        fetch(API_BASE+'/files', {
-            method: 'GET',
-            headers: {token}
-        }).then(response=>response.json()).then(res).catch(rej)
-    });   
-}
 
 class FileList extends React.Component {
-    state = {
-        data: null
-    }
     constructor(props, context) {
         super(props, context);
     }
 
     componentDidMount() {
-        sleep(WAIT).then(()=>getFilesForUser().then(data=>this.setState({data})))
+        const { files } = this.props;
+        files();
     }
 
     render() {
-        const { data } = this.state;
-        return <div style={{marginTop: rhythm(TOP_MARGIN)}}>
+        const { data, style } = this.props;
+        return <div style={{marginTop: theme.spacing.medium, ...style}}>
             <h2>Uploaded files</h2>
             <ul>
                 {data && data.map(e=><li>{e.filename}</li>)}
@@ -43,4 +27,6 @@ class FileList extends React.Component {
     }
 }
 
-export default FileList;
+const mapState = state => ({data: state.api.data['FILES']})
+const mapDispatch = dispatch => ({files: ()=>dispatch(files())})
+export default connect(mapState, mapDispatch)(FileList);

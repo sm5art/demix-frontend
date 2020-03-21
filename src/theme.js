@@ -12,7 +12,7 @@ export default {
     spacing: {
         small: rhythm(0.5),
         medium: rhythm(1),
-        large: rhythm(1.5)
+        large: rhythm(2)
     },
     fonts: {
         small: scale(0.3),

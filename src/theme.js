@@ -1,4 +1,4 @@
-import { blue, grey, geekblue } from './utils/colors';
+import { grey, geekblue } from './utils/colors';
 import { rhythm, scale } from './utils/typography';
 
 export default {

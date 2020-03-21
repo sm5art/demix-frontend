@@ -21,12 +21,12 @@ class Header extends React.Component {
     return (
       <header >
           <Row>
-            <Col span={7}>
-            <h1 onClick={()=>navigate('/')} style={{color: grey[0], marginTop: theme.spacing.small }} >
+            <Col span={6}>
+            <h1 onClick={()=>navigate('/')} style={{color: grey[0] }} >
                 {siteTitle}
             </h1>
             </Col>
-            <Col span={24-7}>
+            <Col span={24-6}>
             <Menu isLoggedIn={isLoggedIn}/>
             </Col>
           </Row>

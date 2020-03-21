@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import Layout from "../components/layout"
 import UploadContainer from '../components/upload';
-import Container from '../components/Container';
+import Container from '../components/container';
 import SEO from "../components/seo"
 import { login } from '../redux/auth/actions';
 import { getUrlVars } from '../utils/url';

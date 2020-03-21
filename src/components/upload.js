@@ -39,6 +39,7 @@ const onStart = (dispatch) => () => dispatch(uploadStarted());
 
 const DragUpload = ({style}) => {
   const dispatch = useDispatch();
+  const data_id = useSelector(state=>state.upload.data);
   return (
     <div style={style}>
         <Dragger {...props(useSelector(state=>state.auth.token), onSuccess(dispatch), onError(dispatch), onStart(dispatch))}>
@@ -53,6 +54,7 @@ const DragUpload = ({style}) => {
             Max file size: 30 mb
           </p>
         </Dragger>
+        {data_id && <a href={`${API_BASE}/result/${data_id}`}>download</a>}
       </div>
 )};
 

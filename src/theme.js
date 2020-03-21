@@ -15,8 +15,8 @@ export default {
         large: rhythm(2)
     },
     fonts: {
-        small: scale(0.3),
-        medium: scale(1),
+        small: scale(0.2),
+        medium: scale(0.5),
         large: scale(1.5),
         h1: scale(2)
     }

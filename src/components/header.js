@@ -21,12 +21,12 @@ class Header extends React.Component {
     return (
       <header >
           <Row>
-            <Col span={7}>
-            <h1 onClick={()=>navigate('/')} style={{color: grey[0], marginTop: theme.spacing.small }} >
+            <Col span={6}>
+            <h1 onClick={()=>navigate('/')} style={{color: grey[0] }} >
                 {siteTitle}
             </h1>
             </Col>
-            <Col flex="auto">
+            <Col span={24-6}>
             <Menu isLoggedIn={isLoggedIn}/>
             </Col>
           </Row>
@@ -51,7 +51,7 @@ const AvatarS = () =>
     <Avatar style={{marginLeft: theme.spacing.medium}} size="large" icon="user" />
   </Popover>);
 
-const Menu = ({isLoggedIn}) =>
+const Menu = ({ isLoggedIn }) =>
   (
     <div style={{display:'inline', float:'right'}}>
       {isLoggedIn && <Item onClick={()=>navigate('/upload')} text='upload'/> }

@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import { grey } from '../utils/colors';
 import { logout } from '../redux/auth/actions';
 import { login } from '../utils/login';
+import { isClient } from '../utils/client';
 import theme from '../theme';
 
 
@@ -55,8 +56,8 @@ const Menu = ({isLoggedIn}) =>
     <div style={{display:'inline', float:'right'}}>
       {isLoggedIn && <Item onClick={()=>navigate('/upload')} text='upload'/> }
       {isLoggedIn && <Item onClick={()=>navigate('/files')} text='my files'/> }
-      {!isLoggedIn && <Item selected={window.location.pathname === '/'} onClick={()=>{navigate('/');}} text='features'/> } 
-      {!isLoggedIn && <Item selected={window.location.pathname === '/pricing'} onClick={()=>{navigate('/pricing')}} text='pricing'/> }
+      {!isLoggedIn && <Item selected={isClient && window.location.pathname === '/'} onClick={()=>{navigate('/');}} text='features'/> } 
+      {!isLoggedIn && <Item selected={isClient && window.location.pathname === '/pricing'} onClick={()=>{navigate('/pricing')}} text='pricing'/> }
       {isLoggedIn ? <AvatarS/> : <Item onClick={()=>{login();}} text='log in'/> }
     </div>
   );

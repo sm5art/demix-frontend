@@ -1,7 +1,8 @@
 module.exports = {
   siteMetadata: {
+    seoTitle: `unmix`,
     title: `unmix`,
-    description: `Seperate your tracks seamlessly. Unmix retrieves vocals, bass, drums, and others seperated from a finalized mix.`,
+    description: `Seperate your tracks seamlessly. Unmix retrieves vocals, bass, drums, and others seperated from a finalized mp3 or wav.`,
     author: `@arturk`,
   },
   plugins: [

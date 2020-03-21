@@ -5,6 +5,8 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@ant-design/icons": "^4.0.3",
+    "animate.css": "^3.7.2",
     "antd": "^3.26.11",
     "gatsby": "^2.19.7",
     "gatsby-image": "^2.2.39",
@@ -20,6 +22,8 @@
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
     "react-redux": "^7.2.0",
+    "redux-thunk": "^2.3.0",
+    "reduxsauce": "^1.1.2",
     "typography": "^0.16.19"
   },
   "devDependencies": {

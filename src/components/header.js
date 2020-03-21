@@ -26,7 +26,7 @@ class Header extends React.Component {
                 {siteTitle}
             </h1>
             </Col>
-            <Col flex="auto">
+            <Col span={24-7}>
             <Menu isLoggedIn={isLoggedIn}/>
             </Col>
           </Row>
@@ -51,7 +51,7 @@ const AvatarS = () =>
     <Avatar style={{marginLeft: theme.spacing.medium}} size="large" icon="user" />
   </Popover>);
 
-const Menu = ({isLoggedIn}) =>
+const Menu = ({ isLoggedIn }) =>
   (
     <div style={{display:'inline', float:'right'}}>
       {isLoggedIn && <Item onClick={()=>navigate('/upload')} text='upload'/> }

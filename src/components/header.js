@@ -20,17 +20,10 @@ class Header extends React.Component {
     const { siteTitle, isLoggedIn } = this.props;
     return (
       <header >
-          <Row>
-            <Col span={5}>
-            <h1 onClick={()=>navigate('/')} style={{color: grey[0], ...theme.fonts.medium }} >
+            <h1 onClick={()=>navigate('/')} style={{color: grey[0], ...theme.fonts.medium, display: 'inline' }} >
                 {siteTitle}
             </h1>
-            </Col>
-            <Col span={24-5}>
-            <Menu isLoggedIn={isLoggedIn}/>
-            </Col>
-          </Row>
-            
+            { isLoggedIn ? <LoggedInMenu/> : <LoggedOutMenu/> }
       </header>
     );
   }
@@ -51,16 +44,23 @@ const AvatarS = () =>
     <Avatar style={{marginLeft: theme.spacing.medium}} size="large" icon="user" />
   </Popover>);
 
-const Menu = ({ isLoggedIn }) =>
+const containsStr = (str, otherStr) => str.indexOf(otherStr) >= 0;
+
+const LoggedOutMenu = () =>
   (
-    <div style={{display:'inline', float:'right'}}>
-      {isLoggedIn && <Item onClick={()=>navigate('/upload')} text='upload'/> }
-      {isLoggedIn && <Item onClick={()=>navigate('/files')} text='my files'/> }
-      {!isLoggedIn && <Item selected={isClient && window.location.pathname === '/'} onClick={()=>{navigate('/');}} text='features'/> } 
-      {!isLoggedIn && <Item selected={isClient && window.location.pathname === '/pricing'} onClick={()=>{navigate('/pricing')}} text='pricing'/> }
-      {isLoggedIn ? <AvatarS/> : <Item onClick={()=>{login();}} text='log in'/> }
+    <div style={{display:'inline', paddingLeft: theme.spacing.medium}}>
+      <Item selected={isClient && window.location.pathname === '/'} onClick={()=>{navigate('/');}} text='features'/>
+      <Item selected={isClient && containsStr(window.location.pathname,'/pricing')} onClick={()=>{navigate('/pricing')}} text='pricing'/>
+      <Item onClick={()=>{login();}} text='log in'/>
     </div>
   );
+
+const LoggedInMenu = () => (
+  <div style={{display:'inline', float:'right'}}>
+      <Item selected={isClient && containsStr(window.location.pathname,'/upload')} onClick={()=>navigate('/upload')} text='upload'/>
+      <AvatarS/> 
+  </div>
+)
 
 const Item = ({onClick, text, selected, style}) => (
   <a style={{...theme.fonts.small, ...style, marginLeft: theme.spacing.medium ,textDecoration: selected ? 'overline' : 'none'}} onClick={onClick}>{text}</a>

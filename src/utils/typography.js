@@ -2,9 +2,9 @@ import Typography from "typography"
 
 const typography = new Typography({
   baseFontSize: '14px',
-  baseLineHeight: 1.5,
-  headerFontFamily: ['Avenir Next', 'Helvetica Neue', 'Segoe UI', 'Helvetica', 'Arial', 'sans-serif'],
-  bodyFontFamily: ['Georgia', 'serif'],
+  baseLineHeight: 1.57,
+  headerFontFamily: ['Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif'],
+  bodyFontFamily: ['Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif'],
   // See below for the full list of options.
 })
 

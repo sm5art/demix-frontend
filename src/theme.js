@@ -3,11 +3,8 @@ import { rhythm, scale } from './utils/typography';
 
 export default {
     colors: {
-        primary: grey[7],
-        background:{
-            primary: grey[0],
-            secondary: geekblue[4]
-        }
+        primary: grey,
+        secondary: geekblue
     },
     spacing: {
         small: rhythm(0.5),
@@ -15,6 +12,7 @@ export default {
         large: rhythm(2)
     },
     fonts: {
+        tiny: scale(0.1),
         small: scale(0.2),
         medium: scale(0.5),
         large: scale(1.5),

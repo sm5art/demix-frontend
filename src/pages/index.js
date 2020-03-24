@@ -16,7 +16,7 @@ const IndexPage = ()=>
     <Jumbotron/>
   </Container>
   <Sample/>
-  <Container style={{paddingLeft: theme.spacing.medium, paddingRight: theme.spacing.medium}}>
+  <Container style={{paddingLeft: theme.spacing.medium, paddingRight: theme.spacing.medium, paddingBottom: theme.spacing.large}}>
     <LoginWith/>
   </Container>
 </Layout>

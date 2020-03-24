@@ -13,7 +13,7 @@ const LoginWith = () => (
         </Col>
         <Col style={{paddingLeft: theme.spacing.small, paddingRight: theme.spacing.small}} span={12}>
             <Button onClick={login} shape="round">Sign in with <GoogleOutlined /></Button>
-            <h1 style={{...theme.fonts.small, marginTop: theme.spacing.small}}>Drag in your audio file and get 4 stems out. Get started for free.</h1>
+            <h1 style={{...theme.fonts.small, marginTop: theme.spacing.small}}>Drag in your audio file and get two stems out. Get started for free.</h1>
         </Col>
     </Row>
 );

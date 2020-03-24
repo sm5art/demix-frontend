@@ -1,18 +1,24 @@
-import { FILES, FILES_SUCCESS } from './actions';
-import getToken from '../../utils/auth';
+import { message } from 'antd';
+
+import { FILES, FILES_SUCCESS, FILES_ERROR } from './actions';
 
 // the initial state of this reducer
-const INITIAL_STATE = { error: false, loading: {FILES: false}, data: {FILES: null} }
+const INITIAL_STATE = { files: { loading: false, error: null, data: null, uploadedFileCount: null }, }
 
 function reducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case FILES:
       return {
-        ...state, loading: {...state.loading, FILES: true},
+        ...state, files: { loading: true, error: null, data: null, uploadedFileCount: null},
       }
     case FILES_SUCCESS:
       return {
-        ...state, loading: {...state.loading, FILES: true}, data: {...state.data, FILES: action.data}, 
+        ...state, files: { loading: false, error: null, data: action.data.data, uploadedFileCount: action.data.data.length}, 
+      }
+    case FILES_ERROR:
+      message.error(action.error);
+      return {
+        ...state, files: { loading: false, error: action.error, data: null, uploadedFileCount: null}
       }
     default:
       return state

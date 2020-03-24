@@ -1,7 +1,7 @@
-import { UPLOAD_STARTED, UPLOAD_ERROR, UPLOAD_SUCCESS } from './actions';
+import { UPLOAD_STARTED, UPLOAD_ERROR, UPLOAD_SUCCESS, SWITCH_STEM } from './actions';
 
 // the initial state of this reducer
-const INITIAL_STATE = { error: null, loading: false, data: null }
+const INITIAL_STATE = { error: null, loading: false, data: null, stems: 2 }
 
 function reducer(state = INITIAL_STATE, action) {
   switch (action.type) {
@@ -16,6 +16,10 @@ function reducer(state = INITIAL_STATE, action) {
     case UPLOAD_SUCCESS:
       return {
         ...state, loading: false, data: action.data,
+      }
+    case SWITCH_STEM:
+      return {
+        ...state, stems: action.value
       }
     default:
       return state

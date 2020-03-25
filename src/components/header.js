@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 
 import { grey } from '../utils/colors';
 import { logout } from '../redux/auth/actions';
-import { login } from '../utils/login';
+import { switchModal } from '../redux/auth/actions';
 import { isClient } from '../utils/client';
 import theme from '../theme';
 
@@ -46,14 +46,17 @@ const AvatarS = () =>
 
 const containsStr = (str, otherStr) => str.indexOf(otherStr) >= 0;
 
-const LoggedOutMenu = () =>
-  (
+const LoggedOutMenu = () =>{
+  const dispatch = useDispatch();
+  return (
     <div style={{display:'inline', paddingLeft: theme.spacing.medium}}>
       <Item selected={isClient && window.location.pathname === '/'} onClick={()=>{navigate('/');}} text='features'/>
       <Item selected={isClient && containsStr(window.location.pathname,'/pricing')} onClick={()=>{navigate('/pricing')}} text='pricing'/>
-      <Item onClick={()=>{login();}} text='log in'/>
+      <Item onClick={()=>dispatch(switchModal())} text='log in'/>
     </div>
   );
+}
+  
 
 const LoggedInMenu = () => (
   <div style={{display:'inline', float:'right'}}>

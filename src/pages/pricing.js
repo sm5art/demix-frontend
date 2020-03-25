@@ -1,11 +1,15 @@
 import React from "react";
 
 import Layout from "../components/layout";
+import Container from '../components/container';
+import Pricing from '../components/PricingTier';
 import SEO from "../components/seo";
 
-const Pricing = () =>
+const PricingPage = () =>
   (<Layout>
     <SEO title="Pricing" />
-    pricing
+    <Container>
+      <Pricing/>
+    </Container>
   </Layout>);
-export default Pricing;
+export default PricingPage;

@@ -7,6 +7,7 @@ export default {
         secondary: geekblue
     },
     spacing: {
+        tiny: rhythm(0.2),
         small: rhythm(0.5),
         medium: rhythm(1),
         large: rhythm(2)

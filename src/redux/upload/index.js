@@ -1,3 +1,4 @@
+import { message } from 'antd';
 import { UPLOAD_STARTED, UPLOAD_ERROR, UPLOAD_SUCCESS, SWITCH_STEM } from './actions';
 
 // the initial state of this reducer
@@ -10,6 +11,7 @@ function reducer(state = INITIAL_STATE, action) {
         ...state, loading: true, data: null,
       }
     case UPLOAD_ERROR:
+      message.error(action.error);
       return {
         ...state, loading: false, error: action.error, 
       }

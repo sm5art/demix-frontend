@@ -1,21 +1,28 @@
 import React from 'react';
 import { Button, Row, Col } from 'antd';
 import { GoogleOutlined } from '@ant-design/icons';
+import { useDispatch } from 'react-redux';
 
 import theme from '../theme';
-import { login } from '../utils/login';
+import { switchModal } from '../redux/auth/actions';
 
-const LoginWith = () => (
-    <Row style={{marginTop: theme.spacing.large, marginBottom: theme.spacing.large}} type="flex">
-        <Col span={12}>
-            <h1 style={{...theme.fonts.medium,}}>Built for DJs and producers by a DJ.</h1>
-
-        </Col>
-        <Col style={{paddingLeft: theme.spacing.small, paddingRight: theme.spacing.small}} span={12}>
-            <Button onClick={login} shape="round">Sign in with <GoogleOutlined /></Button>
-            <h1 style={{...theme.fonts.small, marginTop: theme.spacing.small}}>Drag in your audio file and get two stems out. Get started for free.</h1>
-        </Col>
-    </Row>
-);
+const LoginWith = () => {
+    const dispatch = useDispatch();
+    return (
+        <div style={{marginTop: theme.spacing.large, marginBottom: theme.spacing.large}}>
+            <Row>
+                <Col span={12}>
+                    <h1 style={{...theme.fonts.medium,}}>Built for DJs and producers by a DJ.</h1>
+                </Col>
+            </Row>
+            <Row>
+                <Col span={12} style={{float: 'right'}}>
+                    <h1 style={{...theme.fonts.small, marginTop: theme.spacing.small}}>Drag in your audio file and get two stems out. Get started for free.</h1>
+                    <Button type="primary" onClick={()=>dispatch(switchModal())} shape="round">Get started</Button>
+                </Col>   
+            </Row>
+        </div>
+    );
+}
 
 export default LoginWith;

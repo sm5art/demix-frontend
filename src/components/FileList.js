@@ -21,7 +21,7 @@ class FileList extends React.Component {
     render() {
         const { data, style, currentUpload, uploading } = this.props;
         return <div style={{...style}}>
-            <h2>Uploaded files</h2>
+            <h2 style={{...theme.fonts.medium}}>Processed files</h2>
             { uploading && <Spin/> }
             { data && <ListS data={data}/> }
         </div>

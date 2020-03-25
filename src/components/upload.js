@@ -1,5 +1,5 @@
 import React from "react"
-import { Upload, message, Radio, Alert } from 'antd';
+import { Upload, Radio, Alert } from 'antd';
 import { InboxOutlined } from '@ant-design/icons';
 import { useSelector, useDispatch } from 'react-redux';
 import { navigate } from 'gatsby';
@@ -37,7 +37,7 @@ const props = (access, stems, onSuccess, onError, onStart) => ({
 })
 
 const onSuccess = (dispatch) => (data) => dispatch(uploadSuccess(data));
-const onError = (dispatch) => (data) => {dispatch(uploadError(data)); message.error(data);}
+const onError = (dispatch) => (data) => {dispatch(uploadError(data))}
 const onStart = (dispatch) => () => dispatch(uploadStarted());
 
 const DragUpload = ({style}) => {
@@ -46,7 +46,7 @@ const DragUpload = ({style}) => {
   const stems = useSelector(state=>state.upload.stems);
   return (
     <div style={style}>
-      <PremiumWarning max={15}/>
+      <PremiumWarning max={3}/>
       <div style={{textAlign: 'center', marginTop: theme.spacing.medium, marginBottom: theme.spacing.medium}}>
           <StemsSelect disabled/>
       </div>
@@ -70,7 +70,7 @@ const PremiumMessage = ({num, max}) => (
 )
 
 const PremiumWarning = ({max}) => (
-  <Alert message={<PremiumMessage num={useSelector(state=>state.api.files.uploadedFileCount)} max={max}/>} type="warning" showIcon />
+  <Alert message={<PremiumMessage num={max-useSelector(state=>state.api.files.uploadedFileCount)} max={max}/>} type="warning" showIcon />
 );
 
 const StemsSelect = ({ style, disabled }) => {

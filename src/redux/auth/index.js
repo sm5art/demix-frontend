@@ -1,8 +1,8 @@
-import { LOGIN, LOGOUT, CHECK_LOCAL } from './actions';
+import { LOGIN, LOGOUT, CHECK_LOCAL, SWITCH_MODAL } from './actions';
 import getToken from '../../utils/auth';
 
 // the initial state of this reducer
-const INITIAL_STATE = { error: false, token: null }
+const INITIAL_STATE = { error: false, token: null, modal: false }
 
 function reducer(state = INITIAL_STATE, action) {
   switch (action.type) {
@@ -19,6 +19,10 @@ function reducer(state = INITIAL_STATE, action) {
       window.localStorage.removeItem('access')
       return {
         INITIAL_STATE
+      }
+    case SWITCH_MODAL:
+      return {
+        ...state, modal: !state.modal
       }
     default:
       return state

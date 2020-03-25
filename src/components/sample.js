@@ -6,8 +6,10 @@ import theme from '../theme';
 import { geekblue } from '../utils/colors';
 import Container from './container';
 
+const COLOR_SHADE = 4;
+
 const Sample = () => (
-    <div style={{background: theme.colors.background.secondary,}}>
+    <div style={{background: theme.colors.secondary[COLOR_SHADE]}}>
         <Container style={{paddingLeft:theme.spacing.medium, paddingRight:theme.spacing.medium, paddingTop: theme.spacing.large, paddingBottom: theme.spacing.large}}>
             <h1 style={{...theme.fonts.large,}}>See a sample</h1>
 

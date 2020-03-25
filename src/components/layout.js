@@ -13,6 +13,7 @@ import { Layout } from 'antd';
 import Head from "./header"
 import Foot from './footer'
 import Container from './container'
+import LoginModal from './LoginModal';
 import theme from '../theme';
 
 const { Header, Footer, Content } = Layout;
@@ -37,6 +38,7 @@ const LayoutS = ({ children, isLoggedIn })=> {
         </Container>
       </Header>
       <Content>
+        <LoginModal/>
         {children}
       </Content>
       <Footer style={{padding: 0}}>

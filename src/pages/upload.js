@@ -1,9 +1,11 @@
 import React from "react"
 import { navigate } from 'gatsby';
 import { connect } from 'react-redux';
+import { Spin } from 'antd';
 
 import Layout from "../components/layout"
 import UploadContainer from '../components/upload';
+import FileList from '../components/FileList';
 import Container from '../components/container';
 import SEO from "../components/seo"
 import { login } from '../redux/auth/actions';
@@ -28,11 +30,16 @@ class UploadPage extends React.Component {
   }
 
   render() { 
+    const { token } = this.props;
     return  (
       <Layout isLoggedIn>
         <SEO title="Upload a file" />
-        <Container style={{paddingLeft: theme.spacing.medium, paddingRight: theme.spacing.medium}}>
-          <UploadContainer style={{marginTop: theme.spacing.medium}}/>
+        <Container style={{paddingLeft: theme.spacing.medium, paddingRight: theme.spacing.medium, paddingBottom: theme.spacing.large}}>
+          {token ? 
+          <>
+            <UploadContainer style={{marginTop: theme.spacing.medium}}/>
+            <FileList style={{marginTop: theme.spacing.large}}/>
+          </> : <Spin size="large"/>}
         </Container>
       </Layout>
     );
@@ -40,4 +47,4 @@ class UploadPage extends React.Component {
 }
 
 const connectDispatch = (dispatch) => ({login:(token)=>dispatch(login(token))})
-export default connect(state=>({token: state.auth.token}), connectDispatch)(UploadPage);
+export default connect(state=>({token: state.auth.token,}), connectDispatch)(UploadPage);

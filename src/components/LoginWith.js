@@ -12,7 +12,7 @@ const LoginWith = () => {
         <div style={{marginTop: theme.spacing.large, marginBottom: theme.spacing.large}}>
             <Row>
                 <Col span={12}>
-                    <h1 style={{...theme.fonts.medium,}}>Built for DJs and producers by a DJ.</h1>
+                    <h1 style={{...theme.fonts.medium,}}>Built for DJs and producers.</h1>
                 </Col>
             </Row>
             <Row>

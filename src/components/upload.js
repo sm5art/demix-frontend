@@ -6,6 +6,7 @@ import { navigate } from 'gatsby';
 
 import { uploadStarted, uploadError, uploadSuccess, switchStem } from '../redux/upload/actions';
 import { API_BASE } from '../constants';
+import isClient from '../utils/client';
 import theme from '../theme';
 
 const { Dragger } = Upload;
@@ -14,6 +15,8 @@ const props = (access, stems, onSuccess, onError, onStart) => ({
     action: `${API_BASE}/post_file`,
     method:'post',
     data: { stems },
+    supportServerRender: !isClient,
+    showUploadList: false,
     onChange: (info)=>{
       const { status } = info.file;
       if (status === 'uploading') {
@@ -48,7 +51,7 @@ const DragUpload = ({style}) => {
     <div style={style}>
       <PremiumWarning max={3}/>
       <div style={{textAlign: 'center', marginTop: theme.spacing.medium, marginBottom: theme.spacing.medium}}>
-          <StemsSelect disabled/>
+          <StemsSelect/>
       </div>
       <Dragger {...props(token, stems, onSuccess(dispatch), onError(dispatch), onStart(dispatch))}>
         <p className="ant-upload-drag-icon">
@@ -77,7 +80,7 @@ const StemsSelect = ({ style, disabled }) => {
   const dispatch = useDispatch();
   return ( <>
     <p style={{...theme.fonts.tiny, color: theme.colors.primary[6], marginBottom: theme.spacing.small}}>Choose an output option {disabled && "(premium only)"}</p>
-    <Radio.Group disabled={disabled} style={style} buttonStyle="solid" onChange={(val)=>dispatch(switchStem(val))} defaultValue="2">
+    <Radio.Group disabled={disabled} style={style} buttonStyle="solid" onChange={(val)=>dispatch(switchStem(val.target.value))} defaultValue="2">
       <Radio.Button value="2">Vocals, and instrumental</Radio.Button>
       <Radio.Button value="4">Vocals, drums, bass, and others</Radio.Button>
     </Radio.Group>

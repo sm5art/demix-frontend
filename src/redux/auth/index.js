@@ -17,9 +17,7 @@ function reducer(state = INITIAL_STATE, action) {
       }
     case LOGOUT:
       window.localStorage.removeItem('access')
-      return {
-        INITIAL_STATE
-      }
+      return INITIAL_STATE;
     case SWITCH_MODAL:
       return {
         ...state, modal: !state.modal

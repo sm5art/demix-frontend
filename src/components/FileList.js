@@ -34,21 +34,20 @@ const ListS = ({data}) => (
         bordered
         dataSource={data}
         renderItem={item => (
-            <FileItem filename={item.filename} date={item.date} id={item._id}/>
+            <FileItem filename={item.filename} date={item.date} id={item._id} stems={item.stems}/>
         )}
   />
 )
 
-const FileItem = ({filename, date, id}) => (
+const FileItem = ({filename, date, id, stems}) => (
     <List.Item
             actions={[<a href={`${API_BASE}/result/${id}`} target="_blank"><DownloadOutlined /></a>,]}
         >
         <List.Item.Meta
             title={filename}
             description={date}
-        >
-            <div>content</div>
-        </List.Item.Meta>
+        />
+        <div>{stems}</div>
     </List.Item>
 );
 

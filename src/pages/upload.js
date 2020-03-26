@@ -23,6 +23,7 @@ class UploadPage extends React.Component {
     const { login, token } = this.props;
     if(vars['access']) {
       login(vars['access']);
+      navigate('/upload')
     }
     else if(!token){
       navigate('/');
@@ -32,7 +33,7 @@ class UploadPage extends React.Component {
   render() { 
     const { token } = this.props;
     return  (
-      <Layout isLoggedIn>
+      <Layout>
         <SEO title="Upload a file" />
         <Container style={{paddingLeft: theme.spacing.medium, paddingRight: theme.spacing.medium, paddingBottom: theme.spacing.large}}>
           {token ? 

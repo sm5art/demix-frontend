@@ -19,10 +19,15 @@ class FileList extends React.Component {
     }
 
     render() {
-        const { data, style, currentUpload, uploading } = this.props;
+        const { style, currentUpload, uploading, stems } = this.props;
+        let { data } = this.props;
+        data = Object.assign([], data);
+        if(currentUpload && uploading) {
+            data.unshift({filename: currentUpload.name, loading: uploading, stems})
+            console.log(data)
+        }
         return <div style={{...style}}>
             <h2 style={{...theme.fonts.medium}}>Processed files</h2>
-            { uploading && <Spin/> }
             { data && <ListS data={data}/> }
         </div>
     }
@@ -34,24 +39,28 @@ const ListS = ({data}) => (
         bordered
         dataSource={data}
         renderItem={item => (
-            <FileItem filename={item.filename} date={item.date} id={item._id}/>
+            <FileItem loading={item.loading} filename={item.filename} date={item.date} id={item._id} stems={item.stems}/>
         )}
   />
 )
 
-const FileItem = ({filename, date, id}) => (
+const FileItem = ({filename, date, id, stems, loading}) => (
     <List.Item
-            actions={[<a href={`${API_BASE}/result/${id}`} target="_blank"><DownloadOutlined /></a>,]}
+            actions={id ? [<a href={`${API_BASE}/result/${id}`} target="_blank"><DownloadOutlined /></a>,]: []}
         >
         <List.Item.Meta
+            style={{overflow: 'hidden'}}
             title={filename}
             description={date}
-        >
-            <div>content</div>
-        </List.Item.Meta>
+        />
+
+        <div>
+            <span>{stems} stem</span>
+            { loading && <Spin style={{marginLeft: theme.spacing.small}}/>}
+        </div>
     </List.Item>
 );
 
-const mapState = state => ({data: state.api.files.data, currentUpload: state.upload.data, uploading: state.upload.loading})
+const mapState = state => ({data: state.api.files.data, currentUpload: state.upload.data, uploading: state.upload.loading, stems: state.upload.stems})
 const mapDispatch = dispatch => ({files: ()=>dispatch(files())})
 export default connect(mapState, mapDispatch)(FileList);

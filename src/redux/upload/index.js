@@ -2,13 +2,13 @@ import { message } from 'antd';
 import { UPLOAD_STARTED, UPLOAD_ERROR, UPLOAD_SUCCESS, SWITCH_STEM } from './actions';
 
 // the initial state of this reducer
-const INITIAL_STATE = { error: null, loading: false, data: null, stems: 2 }
+const INITIAL_STATE = { error: null, loading: false, data: null, stems: '2' }
 
 function reducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case UPLOAD_STARTED:
       return {
-        ...state, loading: true, data: null,
+        ...state, loading: true, data: action.data,
       }
     case UPLOAD_ERROR:
       message.error(action.error);

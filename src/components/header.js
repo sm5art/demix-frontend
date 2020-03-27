@@ -1,13 +1,12 @@
-import { Link, navigate } from "gatsby";
+import { navigate } from "gatsby";
 import PropTypes from "prop-types";
 import React from "react";
-import { Row, Col, Avatar, Button, Popover } from 'antd';
-import { useDispatch } from 'react-redux';
+import { Avatar, Button, Popover } from 'antd';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { grey } from '../utils/colors';
 import { logout } from '../redux/auth/actions';
 import { switchModal } from '../redux/auth/actions';
-import { isClient } from '../utils/client';
 import theme from '../theme';
 
 
@@ -31,27 +30,28 @@ class Header extends React.Component {
 
 const ProfileContent = () => {
   const dispatch = useDispatch();
+  const userData = useSelector(state=>state.api.me.data);
   return (
-  <div>
-    <Button onClick={()=>{
+  <div style={{textAlign: 'center'}}>
+    <div style={{...theme.fonts.small}}>{userData && userData.email}</div>
+    <Button style={{marginTop: theme.spacing.medium, }} onClick={()=>{
       dispatch(logout());
       navigate('/');
     }} type="primary">Log out</Button>
   </div>)};
 
-const AvatarS = () => 
-  (<Popover placement="bottom" content={ProfileContent()} trigger="click">
-    <Avatar style={{marginLeft: theme.spacing.medium}} size="large" icon="user" />
+const AvatarS = ({style}) => {
+  const userData = useSelector(state=>state.api.me.data);
+  return (<Popover placement="bottom" content={ProfileContent()} trigger="click">
+    <Avatar src={userData && userData.google.picture} style={{marginLeft: theme.spacing.medium, ...style}} size="large" icon="user" />
   </Popover>);
-
-const containsStr = (str, otherStr) => str.indexOf(otherStr) >= 0;
+}
 
 const LoggedOutMenu = () =>{
   const dispatch = useDispatch();
   return (
     <div style={{display:'inline', paddingLeft: theme.spacing.medium}}>
-      <Item selected={isClient && window.location.pathname === '/'} onClick={()=>{navigate('/');}} text='features'/>
-      <Item selected={isClient && containsStr(window.location.pathname,'/pricing')} onClick={()=>{navigate('/pricing')}} text='pricing'/>
+      <Item onClick={()=>{navigate('/');}} text='features'/>
       <Item onClick={()=>dispatch(switchModal())} text='log in'/>
     </div>
   );
@@ -59,14 +59,16 @@ const LoggedOutMenu = () =>{
   
 
 const LoggedInMenu = () => (
-  <div style={{display:'inline', float:'right'}}>
-      <Item selected={isClient && containsStr(window.location.pathname,'/upload')} onClick={()=>navigate('/upload')} text='upload'/>
-      <AvatarS/> 
+  <div style={{display:'inline', paddingLeft: theme.spacing.medium}}>
+      <Item onClick={()=>navigate('/upload')} text='upload'/>
+      <div style={{float: 'right'}}>
+        <AvatarS/> 
+      </div>
   </div>
 )
 
-const Item = ({onClick, text, selected, style}) => (
-  <a style={{...theme.fonts.small, ...style, marginLeft: theme.spacing.medium ,textDecoration: selected ? 'overline' : 'none'}} onClick={onClick}>{text}</a>
+const Item = ({onClick, text, style}) => (
+  <a style={{...theme.fonts.small, ...style, marginLeft: theme.spacing.medium ,}} onClick={onClick}>{text}</a>
 );
 
 

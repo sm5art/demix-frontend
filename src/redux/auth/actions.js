@@ -1,12 +1,19 @@
+import { me } from '../api/actions';
+
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
 export const CHECK_LOCAL = "CHECK_LOCAL";
 export const SWITCH_MODAL = "SWITCH_MODAL";
 
-export const login = (token) => ({
+const loginStructure = (token) => ({
     type: LOGIN,
     token
 })
+
+export const login = (token) => (dispatch) => {
+    dispatch(loginStructure(token));
+    dispatch(me());
+}
 
 export const logout = () => ({
     type: LOGOUT

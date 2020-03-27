@@ -6,7 +6,7 @@ import { navigate } from 'gatsby';
 
 import { uploadStarted, uploadError, uploadSuccess, switchStem } from '../redux/upload/actions';
 import { API_BASE } from '../constants';
-import isClient from '../utils/client';
+import { isClient } from '../utils/client';
 import theme from '../theme';
 
 const { Dragger } = Upload;

@@ -46,14 +46,12 @@ const AvatarS = ({style}) => {
     <Avatar src={userData && userData.google.picture} style={{marginLeft: theme.spacing.medium, ...style}} size="large" icon="user" />
   </Popover>);
 }
-const containsStr = (str, otherStr) => str.indexOf(otherStr) >= 0;
 
 const LoggedOutMenu = () =>{
   const dispatch = useDispatch();
   return (
     <div style={{display:'inline', paddingLeft: theme.spacing.medium}}>
       <Item onClick={()=>{navigate('/');}} text='features'/>
-      <Item  onClick={()=>{navigate('/pricing')}} text='pricing'/>
       <Item onClick={()=>dispatch(switchModal())} text='log in'/>
     </div>
   );
@@ -63,7 +61,6 @@ const LoggedOutMenu = () =>{
 const LoggedInMenu = () => (
   <div style={{display:'inline', paddingLeft: theme.spacing.medium}}>
       <Item onClick={()=>navigate('/upload')} text='upload'/>
-      <Item  onClick={()=>{navigate('/pricing')}} text='pricing'/>
       <div style={{float: 'right'}}>
         <AvatarS/> 
       </div>

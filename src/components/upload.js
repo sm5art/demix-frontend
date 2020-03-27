@@ -21,7 +21,7 @@ const props = (access, stems, onSuccess, onError, onStart) => ({
       const { status } = info.file;
       if (status === 'uploading') {
         console.log('uploading')
-        onStart();
+        onStart(info.file);
       }
       if (status === 'done') {
         console.log('done')
@@ -41,7 +41,7 @@ const props = (access, stems, onSuccess, onError, onStart) => ({
 
 const onSuccess = (dispatch) => (data) => dispatch(uploadSuccess(data));
 const onError = (dispatch) => (data) => {dispatch(uploadError(data))}
-const onStart = (dispatch) => () => dispatch(uploadStarted());
+const onStart = (dispatch) => (data) => dispatch(uploadStarted(data));
 
 const DragUpload = ({style}) => {
   const dispatch = useDispatch();
@@ -49,7 +49,6 @@ const DragUpload = ({style}) => {
   const stems = useSelector(state=>state.upload.stems);
   return (
     <div style={style}>
-      <PremiumWarning max={3}/>
       <div style={{textAlign: 'center', marginTop: theme.spacing.medium, marginBottom: theme.spacing.medium}}>
           <StemsSelect/>
       </div>
@@ -65,16 +64,20 @@ const DragUpload = ({style}) => {
           Max file size: 30 mb
         </p>
       </Dragger>
+      <PremiumWarning style={{marginTop: theme.spacing.tiny}} max={15}/>
     </div>
 )};
 
 const PremiumMessage = ({num, max}) => (
-  <span>You have {num} of your {max} free uploads left until you will need to <a onClick={()=>navigate('/pricing')}>upgrade your plan</a></span>
+  <span>You have {num} of your {max} free daily uploads. (limits server costs)</span>
 )
 
-const PremiumWarning = ({max}) => (
-  <Alert message={<PremiumMessage num={max-useSelector(state=>state.api.files.uploadedFileCount)} max={max}/>} type="warning" showIcon />
-);
+const PremiumWarning = ({max, style}) => {
+  const data = useSelector(state=>state.api.count.data);
+  return (
+    <Alert style={style} message={<PremiumMessage num={max-(data || 0)} max={max}/>} type="warning" showIcon />
+  );
+}
 
 const StemsSelect = ({ style, disabled }) => {
   const dispatch = useDispatch();

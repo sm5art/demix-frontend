@@ -38,7 +38,7 @@ class UploadPage extends React.Component {
         <Container style={{paddingLeft: theme.spacing.medium, paddingRight: theme.spacing.medium, paddingBottom: theme.spacing.large}}>
           {token ? 
           <>
-            <UploadContainer style={{marginTop: theme.spacing.medium}}/>
+            <UploadContainer style={{marginTop: theme.spacing.small}}/>
             <FileList style={{marginTop: theme.spacing.large}}/>
           </> : <Spin size="large"/>}
         </Container>

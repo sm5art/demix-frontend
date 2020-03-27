@@ -16,7 +16,7 @@ const Pricing = () => (
             </Col>
         </Row>
         <Row style={{textAlign: 'center', marginBottom: theme.spacing.large}}>
-        <span style={{...theme.fonts.tiny}}>Refund accepted up to 24 hours after purchase. Cancel any time.</span>
+        <span style={{...theme.fonts.tiny}}>Refund accepted up to 24 hours after purchase.</span>
         </Row>
     </>
 );

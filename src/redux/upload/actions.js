@@ -1,4 +1,4 @@
-import { getFilesForUser } from '../../api';
+import { files, countFiles } from '../api/actions';
 
 export const UPLOAD_STARTED = "UPLOAD_STARTED";
 export const UPLOAD_SUCCESS = "UPLOAD_SUCCESS";
@@ -6,11 +6,18 @@ export const UPLOAD_ERROR = "UPLOAD_ERROR";
 export const SWITCH_STEM = "SWITCH_STEM";
 
 
-export const uploadStarted = () => ({
-    type: UPLOAD_STARTED
+export const uploadStarted = (data) => ({
+    type: UPLOAD_STARTED,
+    data
 })
 
-export const uploadSuccess = (data) => ({
+export const uploadSuccess = (data) => (dispatch) => {
+    dispatch(uploadSuc(data));
+    dispatch(files());
+    dispatch(countFiles());
+}
+
+export const uploadSuc = (data) => ({
     type: UPLOAD_SUCCESS,
     data
 })

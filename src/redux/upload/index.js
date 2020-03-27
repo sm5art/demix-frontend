@@ -8,7 +8,7 @@ function reducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case UPLOAD_STARTED:
       return {
-        ...state, loading: true, data: null,
+        ...state, loading: true, data: action.data,
       }
     case UPLOAD_ERROR:
       message.error(action.error);

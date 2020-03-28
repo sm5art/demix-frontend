@@ -9,19 +9,39 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import { Layout } from 'antd';
-import { useSelector } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 
 import Head from "./header"
 import Foot from './footer'
 import Container from './container'
 import LoginModal from './LoginModal';
 import theme from '../theme';
+import { startup } from '../redux/startup/actions';
 
 const { Header, Footer, Content } = Layout;
 
 
+class LayoutExtra extends React.Component {
+  constructor(props, context) {
+    super(props, context);
+  }
 
-const LayoutS = ({ children })=> {
+  componentDidMount() {
+    if(!this.props.init)
+    this.props.startup();
+  }
+
+  render () {
+    return (
+      <LayoutS isLoggedIn={this.props.isLoggedIn}>
+        {this.props.children}
+      </LayoutS>
+    );
+  }
+}
+
+const LayoutS = ({children, isLoggedIn}) => 
+{
   const data = useStaticQuery(graphql`
       query SiteTitleQuery {
         site {
@@ -31,7 +51,6 @@ const LayoutS = ({ children })=> {
         }
       }
     `)
-  const isLoggedIn = useSelector(state=>state.auth.token) !== null;
   return (
     <Layout style={{minHeight:'100vh'}}>
       <Header style={{padding: 0, background:'inherit'}}>
@@ -47,10 +66,11 @@ const LayoutS = ({ children })=> {
         <Container><Foot/></Container>
       </Footer>
     </Layout>
-) };
+  ) 
+};
 
 LayoutS.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
-export default LayoutS;
+export default connect(state=>({isLoggedIn: state.auth.token !== null, init: state.startup.init}), dispatch=>({startup: ()=>dispatch(startup())}))(LayoutExtra);

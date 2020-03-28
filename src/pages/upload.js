@@ -16,6 +16,7 @@ import theme from '../theme';
 class UploadPage extends React.Component {
   constructor(props, context){
     super(props, context);
+    this.redirect = this.redirect.bind(this);
   }
 
   componentDidMount() {
@@ -25,9 +26,14 @@ class UploadPage extends React.Component {
       login(vars['access']);
       navigate('/upload')
     }
-    else if(!token){
-      navigate('/');
+    else {
+      setTimeout(this.redirect, 500)
     }
+  }
+
+  redirect () {
+    if(!this.props.token)
+      navigate('/')
   }
 
   render() { 

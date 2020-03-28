@@ -6,7 +6,6 @@ import { navigate } from 'gatsby';
 
 import { uploadStarted, uploadError, uploadSuccess, switchStem } from '../redux/upload/actions';
 import { API_BASE } from '../constants';
-import { isClient } from '../utils/client';
 import theme from '../theme';
 
 const { Dragger } = Upload;
@@ -15,13 +14,13 @@ const props = (access, stems, onSuccess, onError, onStart) => ({
     action: `${API_BASE}/post_file`,
     method:'post',
     data: { stems },
-    supportServerRender: !isClient,
+    supportServerRender: true,
     showUploadList: false,
     onChange: (info)=>{
       const { status } = info.file;
       if (status === 'uploading') {
         console.log('uploading')
-        onStart(info.file);
+        onStart(info.file)
       }
       if (status === 'done') {
         console.log('done')
@@ -58,7 +57,7 @@ const DragUpload = ({style}) => {
         </p>
         <p className="ant-upload-text">Click or drag file to this area to upload</p>
         <p className="ant-upload-hint">
-          Supported format: mp3, wav
+          Supported formats: mp3, wav
         </p>
         <p className="ant-upload-hint">
           Max file size: 30 mb

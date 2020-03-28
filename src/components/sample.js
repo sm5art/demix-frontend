@@ -11,7 +11,7 @@ const BACKGROUND_COLOR_SHADE = 4;
 const PRIMARY_COLOR_SHADE = 7;
 
 const Sample = () => (
-    <div style={{background: theme.colors.secondary[BACKGROUND_COLOR_SHADE]}}>
+    <div style={{background: theme.colors.primary[BACKGROUND_COLOR_SHADE]}}>
         <Container style={{paddingLeft:theme.spacing.medium, paddingRight:theme.spacing.medium, paddingTop: theme.spacing.large, paddingBottom: theme.spacing.large}}>
             <h1 style={{...theme.fonts.large,}}>Hear a sample</h1>
 
@@ -19,7 +19,7 @@ const Sample = () => (
                 <Col span={24}>
                     <Audio icon={<Disk/>} src={"/input.mp3"}/>
                 </Col>
-                <Col span={24} style={{display: 'flex', alignItems: 'center',}}>
+                <Col span={22} offset={2} style={{display: 'flex', alignItems: 'center',}}>
                     <DownCircleTwoTone style={{...theme.fonts.medium, margin:'auto'}} twoToneColor={geekblue[PRIMARY_COLOR_SHADE]}/>
                 </Col>
                 <Col span={24}>

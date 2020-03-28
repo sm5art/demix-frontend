@@ -4,7 +4,6 @@ import React from "react";
 import { Avatar, Button, Popover } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { grey } from '../utils/colors';
 import { logout } from '../redux/auth/actions';
 import { switchModal } from '../redux/auth/actions';
 import theme from '../theme';
@@ -19,8 +18,10 @@ class Header extends React.Component {
     const { siteTitle, isLoggedIn } = this.props;
     return (
       <header >
-            <h1 onClick={()=>navigate('/')} style={{color: grey[0], ...theme.fonts.medium, display: 'inline' }} >
-                {siteTitle}
+            <h1 style={{...theme.fonts.medium, display: 'inline' }} >
+                <a style={{color: theme.colors.textPrimary[7]}} href='/'>
+                  {siteTitle}
+                </a>
             </h1>
             { isLoggedIn ? <LoggedInMenu/> : <LoggedOutMenu/> }
       </header>
@@ -42,9 +43,13 @@ const ProfileContent = () => {
 
 const AvatarS = ({style}) => {
   const userData = useSelector(state=>state.api.me.data);
-  return (<Popover placement="bottom" content={ProfileContent()} trigger="click">
-    <Avatar src={userData && userData.google.picture} style={{marginLeft: theme.spacing.medium, ...style}} size="large" icon="user" />
-  </Popover>);
+  return (
+    <a href="#">
+      <Popover placement="bottom" content={ProfileContent()} trigger="click">
+        <Avatar src={userData && userData.google.picture} style={{marginLeft: theme.spacing.medium, ...style}} size="large" icon="user" />
+      </Popover>
+    </a>
+  );
 }
 
 const LoggedOutMenu = () =>{
@@ -56,7 +61,6 @@ const LoggedOutMenu = () =>{
     </div>
   );
 }
-  
 
 const LoggedInMenu = () => (
   <div style={{display:'inline', paddingLeft: theme.spacing.medium}}>

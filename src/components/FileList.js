@@ -35,7 +35,7 @@ class FileList extends React.Component {
 
 const ListS = ({data}) => (
     <List
-        style={{overflow: 'hidden'}}
+        style={{overflow: 'hidden', background: theme.colors.textPrimary[0]}}
         bordered
         dataSource={data}
         renderItem={item => (

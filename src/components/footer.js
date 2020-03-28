@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { Row, } from 'antd';
+import { Row, Col } from 'antd';
 import theme from '../theme';
 
 const Footer = () => (
     <footer style={{textAlign: 'center', paddingBottom: theme.spacing.medium}}>
-            <Row><a href="mailto:contactdemix@gmail.com">contact</a></Row>      
-            <Row>{(new Date()).getFullYear()} ©</Row>
+                    <a style={{marginRight: theme.spacing.small}} href="mailto:contactdemix@gmail.com">Contact Us</a>
+                    &copy; Copyright {(new Date()).getFullYear()} unmix
     </footer>
 );
 

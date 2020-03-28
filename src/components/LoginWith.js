@@ -14,11 +14,9 @@ const LoginWith = () => {
                 <Col span={12}>
                     <h1 style={{...theme.fonts.medium,}}>Built for DJs and producers.</h1>
                 </Col>
-            </Row>
-            <Row>
                 <Col span={12} style={{float: 'right'}}>
-                    <h1 style={{...theme.fonts.small, marginTop: theme.spacing.small}}>Drag in your audio file and get two stems out. Get started for free.</h1>
-                    <Button type="primary" onClick={()=>dispatch(switchModal())} shape="round">Get started</Button>
+                    <h1 style={{...theme.fonts.small, textAlign: "center"}}>Drag in your audio file and get four stems out. Get started for free.</h1>
+                    <Button style={{display: 'block', margin: '0 auto'}} type="primary" onClick={()=>dispatch(switchModal())} shape="round">Get started</Button>
                 </Col>   
             </Row>
         </div>

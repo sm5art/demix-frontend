@@ -13,7 +13,7 @@ const PRIMARY_COLOR_SHADE = 7;
 const Sample = () => (
     <div style={{background: theme.colors.secondary[BACKGROUND_COLOR_SHADE]}}>
         <Container style={{paddingLeft:theme.spacing.medium, paddingRight:theme.spacing.medium, paddingTop: theme.spacing.large, paddingBottom: theme.spacing.large}}>
-            <h1 style={{...theme.fonts.large,}}>See a sample</h1>
+            <h1 style={{...theme.fonts.large,}}>Hear a sample</h1>
 
             <Row type="flex">
                 <Col span={24}>

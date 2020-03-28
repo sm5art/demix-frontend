@@ -19,8 +19,7 @@ const Sample = () => (
                 <Col span={24}>
                     <Audio icon={<Disk/>} src={"/input.mp3"}/>
                 </Col>
-                <Col span={2}></Col>
-                <Col span={22} style={{display: 'flex', alignItems: 'center',}}>
+                <Col span={22} offset={2} style={{display: 'flex', alignItems: 'center',}}>
                     <DownCircleTwoTone style={{...theme.fonts.medium, margin:'auto'}} twoToneColor={geekblue[PRIMARY_COLOR_SHADE]}/>
                 </Col>
                 <Col span={24}>

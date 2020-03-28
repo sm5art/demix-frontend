@@ -19,8 +19,10 @@ class Header extends React.Component {
     const { siteTitle, isLoggedIn } = this.props;
     return (
       <header >
-            <h1 onClick={()=>navigate('/')} style={{color: grey[0], ...theme.fonts.medium, display: 'inline' }} >
-                {siteTitle}
+            <h1 style={{...theme.fonts.medium, display: 'inline' }} >
+                <a style={{color: grey[0]}} href='/'>
+                  {siteTitle}
+                </a>
             </h1>
             { isLoggedIn ? <LoggedInMenu/> : <LoggedOutMenu/> }
       </header>
@@ -42,9 +44,13 @@ const ProfileContent = () => {
 
 const AvatarS = ({style}) => {
   const userData = useSelector(state=>state.api.me.data);
-  return (<Popover placement="bottom" content={ProfileContent()} trigger="click">
-    <Avatar src={userData && userData.google.picture} style={{marginLeft: theme.spacing.medium, ...style}} size="large" icon="user" />
-  </Popover>);
+  return (
+    <a href="#">
+      <Popover placement="bottom" content={ProfileContent()} trigger="click">
+        <Avatar src={userData && userData.google.picture} style={{marginLeft: theme.spacing.medium, ...style}} size="large" icon="user" />
+      </Popover>
+    </a>
+  );
 }
 
 const LoggedOutMenu = () =>{
@@ -56,7 +62,6 @@ const LoggedOutMenu = () =>{
     </div>
   );
 }
-  
 
 const LoggedInMenu = () => (
   <div style={{display:'inline', paddingLeft: theme.spacing.medium}}>

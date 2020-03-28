@@ -6,8 +6,7 @@ import theme from '../theme';
 const Footer = () => (
     <footer style={{textAlign: 'center', paddingBottom: theme.spacing.medium}}>
             <Row>
-                <Col span={8}></Col>
-                <Col span={3}>
+                <Col span={3} offset={8}>
                     <a href="mailto:contactdemix@gmail.com">Contact Us</a>
                 </Col>
                 <Col span={6}>

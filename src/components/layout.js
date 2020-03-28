@@ -9,7 +9,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import { Layout } from 'antd';
-import { connect, useSelector } from 'react-redux';
+import { connect } from 'react-redux';
 
 import Head from "./header"
 import Foot from './footer'
@@ -20,6 +20,7 @@ import { startup } from '../redux/startup/actions';
 
 const { Header, Footer, Content } = Layout;
 
+const BACKGROUND_COLOR_SHADE = 1;
 
 class LayoutExtra extends React.Component {
   constructor(props, context) {
@@ -52,7 +53,7 @@ const LayoutS = ({children, isLoggedIn}) =>
       }
     `)
   return (
-    <Layout style={{minHeight:'100vh'}}>
+    <Layout style={{minHeight:'100vh', background: theme.colors.primary[BACKGROUND_COLOR_SHADE]}}>
       <Header style={{padding: 0, background:'inherit'}}>
         <Container style={{paddingLeft:theme.spacing.small, paddingRight:theme.spacing.small}}>
           <Head siteTitle={data.site.siteMetadata.title} isLoggedIn={isLoggedIn}/>
@@ -62,7 +63,7 @@ const LayoutS = ({children, isLoggedIn}) =>
         <LoginModal/>
         {children}
       </Content>
-      <Footer style={{padding: 0}}>
+      <Footer style={{padding: 0, background: 'inherit'}}>
         <Container><Foot/></Container>
       </Footer>
     </Layout>

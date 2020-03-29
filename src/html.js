@@ -11,10 +11,9 @@ export default function HTML(props) {
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
-        <script type="text/javascript">
-          window._mNHandle = window._mNHandle || {};
+        <script type="text/javascript" dangerouslySetInnerHTML={{ __html: `window._mNHandle = window._mNHandle || {};
           window._mNHandle.queue = window._mNHandle.queue || [];
-          medianet_versionId = "3121199";
+          medianet_versionId = '3121199';`}}>
         </script>
         <script src="https://contextual.media.net/dmedianet.js?cid=8CU482I51" async="async"></script>
         {props.headComponents}

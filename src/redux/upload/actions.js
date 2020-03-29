@@ -1,4 +1,4 @@
-import { files, countFiles } from '../api/actions';
+import { files } from '../api/actions';
 
 export const UPLOAD_STARTED = "UPLOAD_STARTED";
 export const UPLOAD_SUCCESS = "UPLOAD_SUCCESS";
@@ -14,7 +14,6 @@ export const uploadStarted = (data) => ({
 export const uploadSuccess = (data) => (dispatch) => {
     dispatch(uploadSuc(data));
     dispatch(files());
-    dispatch(countFiles());
 }
 
 export const uploadSuc = (data) => ({

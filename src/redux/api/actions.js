@@ -21,6 +21,7 @@ export const files = () => (dispatch, getState) => {
         }
         else {
             dispatch(filesSuccess(data));
+            dispatch(countFiles());
         }
     })
 }

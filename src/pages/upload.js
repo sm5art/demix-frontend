@@ -45,6 +45,16 @@ class UploadPage extends React.Component {
           {token ? 
           <>
             <UploadContainer style={{marginTop: theme.spacing.small}}/>
+            <div id="767059413">
+                <script type="text/javascript">
+                    {`try {
+                        window._mNHandle.queue.push(function (){
+                            window._mNDetails.loadTag("767059413", "728x90", "767059413");
+                        });
+                    }
+                    catch (error) {}`}
+                </script>
+            </div>
             <FileList style={{marginTop: theme.spacing.large}}/>
           </> : <Spin size="large"/>}
         </Container>

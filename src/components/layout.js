@@ -53,6 +53,8 @@ const LayoutS = ({children, isLoggedIn}) =>
       }
     `)
   return (
+    <>
+    <LoginModal/>
     <Layout style={{minHeight:'100vh', background: theme.colors.primary[BACKGROUND_COLOR_SHADE]}}>
       <Header style={{padding: 0, background:'inherit'}}>
         <Container style={{paddingLeft:theme.spacing.small, paddingRight:theme.spacing.small}}>
@@ -60,13 +62,13 @@ const LayoutS = ({children, isLoggedIn}) =>
         </Container>
       </Header>
       <Content>
-        <LoginModal/>
         {children}
       </Content>
       <Footer style={{padding: 0, background: 'inherit'}}>
         <Container><Foot/></Container>
       </Footer>
     </Layout>
+    </>
   ) 
 };
 

@@ -19,6 +19,18 @@ const IndexPage = ()=>
   <Container style={{paddingLeft: theme.spacing.medium, paddingRight: theme.spacing.medium, paddingBottom: theme.spacing.large}}>
     <LoginWith/>
   </Container>
+  <Container>
+    <div id="767059413">
+                <script type="text/javascript">
+                    {`try {
+                        window._mNHandle.queue.push(function (){
+                            window._mNDetails.loadTag("767059413", "728x90", "767059413");
+                        });
+                    }
+                    catch (error) {}`}
+                </script>
+    </div>
+  </Container>
 </Layout>
 );
   

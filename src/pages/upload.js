@@ -7,6 +7,7 @@ import Layout from "../components/layout"
 import UploadContainer from '../components/upload';
 import FileList from '../components/FileList';
 import Container from '../components/container';
+import Ad from '../components/Ad';
 import SEO from "../components/seo"
 import { login } from '../redux/auth/actions';
 import { getUrlVars } from '../utils/url';
@@ -45,16 +46,7 @@ class UploadPage extends React.Component {
           {token ? 
           <>
             <UploadContainer style={{marginTop: theme.spacing.small}}/>
-            <div id="767059413">
-                <script type="text/javascript">
-                    {`try {
-                        window._mNHandle.queue.push(function (){
-                            window._mNDetails.loadTag("767059413", "728x90", "767059413");
-                        });
-                    }
-                    catch (error) {}`}
-                </script>
-            </div>
+            <Ad/>
             <FileList style={{marginTop: theme.spacing.large}}/>
           </> : <Spin size="large"/>}
         </Container>

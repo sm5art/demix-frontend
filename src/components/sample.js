@@ -3,7 +3,6 @@ import { Row, Col, } from 'antd';
 import { DownCircleTwoTone } from '@ant-design/icons';
 
 import theme from '../theme';
-import { geekblue } from '../utils/colors';
 import Container from './container';
 import { Piano, Bass, Drum, Microphone, Disk } from '../images/icons';
 
@@ -20,7 +19,7 @@ const Sample = () => (
                     <Audio icon={<Disk/>} src={"/input.mp3"}/>
                 </Col>
                 <Col span={22} offset={2} style={{display: 'flex', alignItems: 'center',}}>
-                    <DownCircleTwoTone style={{...theme.fonts.medium, margin:'auto'}} twoToneColor={geekblue[PRIMARY_COLOR_SHADE]}/>
+                    <DownCircleTwoTone style={{...theme.fonts.medium, margin:'auto'}} twoToneColor={theme.colors.primary[PRIMARY_COLOR_SHADE]}/>
                 </Col>
                 <Col span={24}>
                     <Audio icon={<Drum/>} src={"/drums.wav"}/>

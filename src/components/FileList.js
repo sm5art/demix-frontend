@@ -23,7 +23,7 @@ class FileList extends React.Component {
 
     smartFiles() {
         const { data, files } = this.props;
-        data && data.map(e=>e.loading).reduce((a, b)=>a||b) && files();
+        data && data.length > 0 && data.map(e=>e.loading).reduce((a, b)=>a||b, false) && files();
     }
 
     render() {

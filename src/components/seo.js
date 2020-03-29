@@ -19,7 +19,7 @@ function SEO({ description, lang, meta, title, }) {
             seoTitle
             description
             author
-            tags
+            keywords
           }
         }
       }
@@ -42,7 +42,7 @@ function SEO({ description, lang, meta, title, }) {
         },
         {
           name: `keywords`,
-          content: site.siteMetadata.tags
+          content: site.siteMetadata.keywords
         },
         {
           property: `og:title`,

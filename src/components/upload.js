@@ -63,7 +63,7 @@ const DragUpload = ({style}) => {
           Max file size: 30 mb
         </p>
       </Dragger>
-      <PremiumWarning style={{marginTop: theme.spacing.tiny}} max={3}/>
+      <PremiumWarning style={{marginTop: theme.spacing.tiny}} max={8}/>
     </div>
 )};
 

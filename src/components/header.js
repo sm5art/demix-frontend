@@ -19,7 +19,7 @@ class Header extends React.Component {
     return (
       <header >
             <h1 style={{...theme.fonts.medium, display: 'inline' }} >
-                <a style={{color: theme.colors.textPrimary[7]}} href='/'>
+                <a style={{color: theme.colors.textPrimary[7]}} onClick={()=>navigate('/')}>
                   {siteTitle}
                 </a>
             </h1>

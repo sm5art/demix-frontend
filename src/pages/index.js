@@ -7,6 +7,7 @@ import Sample from '../components/sample';
 import Container from '../components/container';
 import LoginWith from '../components/LoginWith';
 import SEO from "../components/seo";
+import Ad from '../components/Ad';
 import theme from '../theme';
 
 const IndexPage = ()=>
@@ -20,16 +21,7 @@ const IndexPage = ()=>
     <LoginWith/>
   </Container>
   <Container>
-    <div id="767059413">
-                <script type="text/javascript">
-                    {`try {
-                        window._mNHandle.queue.push(function (){
-                            window._mNDetails.loadTag("767059413", "728x90", "767059413");
-                        });
-                    }
-                    catch (error) {}`}
-                </script>
-    </div>
+    <Ad/>
   </Container>
 </Layout>
 );

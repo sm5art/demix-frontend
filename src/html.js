@@ -11,7 +11,13 @@ export default function HTML(props) {
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
-        <script data-ad-client="ca-pub-2208101730797837" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>        {props.headComponents}
+        <script type="text/javascript">
+          window._mNHandle = window._mNHandle || {};
+          window._mNHandle.queue = window._mNHandle.queue || [];
+          medianet_versionId = "3121199";
+        </script>
+        <script src="https://contextual.media.net/dmedianet.js?cid=8CU482I51" async="async"></script>
+        {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>
         {props.preBodyComponents}

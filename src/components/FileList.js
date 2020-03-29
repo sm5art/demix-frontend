@@ -23,8 +23,8 @@ class FileList extends React.Component {
         let { data } = this.props;
         data = Object.assign([], data);
         if(currentUpload && uploading) {
+            console.log(currentUpload);
             data.unshift({filename: currentUpload.name, loading: uploading, stems})
-            console.log(data)
         }
         return <div style={{...style}}>
             <h2 style={{...theme.fonts.medium}}>Processed files</h2>

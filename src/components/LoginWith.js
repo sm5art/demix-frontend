@@ -12,10 +12,10 @@ const LoginWith = () => {
         <div style={{marginTop: theme.spacing.large, marginBottom: theme.spacing.large}}>
             <Row>
                 <Col span={12}>
-                    <h1 style={{...theme.fonts.medium,}}>Built for DJs and producers.</h1>
+                    <h1 style={{...theme.fonts.medium,}}>Made for karaoke and music production</h1>
                 </Col>
                 <Col span={12} style={{float: 'right'}}>
-                    <h1 style={{...theme.fonts.small, textAlign: "center"}}>Drag in your audio file and get four stems out. Get started for free.</h1>
+                    <h1 style={{...theme.fonts.small, textAlign: "center"}}>Login with google to drag in your audio file and get stems out</h1>
                     <Button style={{display: 'block', margin: '0 auto'}} type="primary" onClick={()=>dispatch(switchModal())} shape="round">Get started</Button>
                 </Col>   
             </Row>

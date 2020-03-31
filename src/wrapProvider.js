@@ -3,6 +3,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk';
 import { Provider, compose } from 'react-redux'
 import 'antd/dist/antd.css';
+import 'animate.css';
 
 
 import reducers from './redux';

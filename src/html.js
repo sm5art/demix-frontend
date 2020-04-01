@@ -12,6 +12,7 @@ export default function HTML(props) {
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
         <meta name="propeller" content="845668bbce51019313ebaa4df3feb756" />
+        <script src="https://pushsar.com/pfe/current/tag.min.js?z=3177649" data-cfasync="false" async />
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>

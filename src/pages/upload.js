@@ -7,7 +7,6 @@ import Layout from '../components/layout';
 import UploadContainer from '../components/upload';
 import FileList from '../components/FileList';
 import Container from '../components/container';
-import Ad from '../components/Ad';
 import SEO from '../components/seo';
 import { login } from '../redux/auth/actions';
 import { getUrlVars } from '../utils/url';
@@ -45,7 +44,6 @@ class UploadPage extends React.Component {
             ? (
               <>
                 <UploadContainer style={{ marginTop: theme.spacing.small }} />
-                <Ad />
                 <FileList style={{ marginTop: theme.spacing.large }} />
               </>
             ) : <Spin size="large" />}

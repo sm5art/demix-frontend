@@ -51,7 +51,6 @@ const ListS = ({ data }) => (
     style={{ overflow: 'hidden', background: theme.colors.textPrimary[0] }}
     bordered
     dataSource={data}
-    s
     renderItem={(item) => (
       <FileItem processed={item.processed} queue={item.queue} progress={item.progress} filename={item.filename} date={item.date} id={item._id} stems={item.stems} />
     )}

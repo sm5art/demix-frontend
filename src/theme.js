@@ -3,8 +3,8 @@ import { rhythm, scale } from './utils/typography';
 
 export default {
   colors: {
-    primary: geekblue,
-    secondary: purple,
+    primary: purple,
+    secondary: geekblue,
     textPrimary: grey,
   },
   spacing: {

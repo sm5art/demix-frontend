@@ -1,4 +1,6 @@
-import { getFilesForUser, meCall, fileCountCall } from '../../api';
+import {
+  getFilesForUser, meCall, fileCountCall, notifyCall,
+} from '../../api';
 
 export const FILES = 'FILES';
 export const FILES_SUCCESS = 'FILES_SUCCESS';
@@ -11,6 +13,10 @@ export const ME_ERROR = 'ME_ERROR';
 export const COUNT = 'COUNT';
 export const COUNT_SUCCESS = 'COUNT_SUCCESS';
 export const COUNT_ERROR = 'COUNT_ERROR';
+
+export const NOTIFY = 'NOTIFY';
+export const NOTIFY_SUCCESS = 'NOTIFY_SUCCESS';
+export const NOTIFY_ERROR = 'NOTIFY_ERROR';
 
 export const files = () => (dispatch, getState) => {
   const { auth: { token } } = getState();
@@ -88,5 +94,30 @@ export const countSuccess = (data) => ({
 
 export const countError = (error) => ({
   type: COUNT_ERROR,
+  error,
+});
+
+export const getNotified = (email) => (dispatch) => {
+  dispatch(notifyStarted());
+  notifyCall(email).then((data) => {
+    if (data.error) {
+      dispatch(notifyError(data.error));
+    } else {
+      dispatch(notifySuccess(data));
+    }
+  });
+};
+
+export const notifyStarted = () => ({
+  type: NOTIFY,
+});
+
+export const notifySuccess = (data) => ({
+  type: NOTIFY_SUCCESS,
+  data,
+});
+
+export const notifyError = (error) => ({
+  type: NOTIFY_ERROR,
   error,
 });

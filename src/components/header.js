@@ -66,6 +66,7 @@ const LoggedOutMenu = () => {
   return (
     <div style={{ paddingLeft: theme.spacing.medium }}>
       <Item onClick={() => { navigate('/'); }} text="features" />
+      <Item onClick={() => { navigate('/pricing'); }} text="pricing" />
       <Item onClick={() => dispatch(switchModal())} text="log in" />
     </div>
   );
@@ -74,6 +75,7 @@ const LoggedOutMenu = () => {
 const LoggedInMenu = () => (
   <div style={{ paddingLeft: theme.spacing.medium, flexGrow: 1 }}>
     <Item onClick={() => navigate('/upload')} text="upload" />
+    <Item onClick={() => { navigate('/pricing'); }} text="pricing" />
     <div style={{ float: 'right' }}>
       <AvatarS />
     </div>

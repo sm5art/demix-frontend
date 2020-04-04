@@ -63,7 +63,7 @@ const DragUpload = ({ style }) => {
           Max file size: 30 mb
         </p>
       </Dragger>
-      <PremiumWarning style={{ marginTop: theme.spacing.tiny }} max={5} />
+      <PremiumWarning style={{ marginTop: theme.spacing.tiny }} max={7} />
     </div>
   );
 };
@@ -78,7 +78,7 @@ const PremiumMessage = ({ num, max }) => (
     {' '}
     {max}
     {' '}
-    free daily uploads. (limits server costs)
+    free weekly uploads.
   </span>
 );
 

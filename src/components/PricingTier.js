@@ -18,10 +18,10 @@ const Pricing = () => {
       <ProModal />
       <Row>
         <Col style={{ padding: theme.spacing.medium }} sm={12} xs={24}>
-          <PricingCard onClick={() => dispatch(switchModal())} buttonText="Get started" title="Starter" price="Free" checks={['7 free weekly uploads']} />
+          <PricingCard onClick={() => dispatch(switchModal())} buttonText="Get started" title="Starter" price="Free" checks={['7 free daily uploads']} />
         </Col>
         <Col style={{ padding: theme.spacing.medium }} sm={12} xs={24}>
-          <PricingCard onClick={() => dispatch(switchProModal())} buttonText="Get notified when Pro releases" billed title="Pro" price="$3.99 a month" checks={['unlimited uploads', 'priority in the queue', 'no ads']} />
+          <PricingCard onClick={() => dispatch(switchProModal())} buttonText="Get notified when it comes" billed title="Pro" price="$3.99 a month" checks={['unlimited uploads', 'priority in the queue', 'no ads']} />
         </Col>
       </Row>
     </>

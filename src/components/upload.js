@@ -78,7 +78,7 @@ const PremiumMessage = ({ num, max }) => (
     {' '}
     {max}
     {' '}
-    free weekly uploads.
+    free daily uploads.
   </span>
 );
 

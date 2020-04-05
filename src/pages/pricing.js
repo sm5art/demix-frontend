@@ -8,7 +8,7 @@ import theme from '../theme';
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Home" />
+    <SEO title="Pricing" />
     <Container style={{ paddingLeft: theme.spacing.medium, paddingRight: theme.spacing.medium }}>
       <Pricing />
     </Container>

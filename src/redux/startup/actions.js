@@ -24,5 +24,4 @@ export const startup = () => (dispatch) => {
   dispatch(checkLocal());
   dispatch(init());
   dispatch(me());
-  dispatch(checkAdBlock());
 };

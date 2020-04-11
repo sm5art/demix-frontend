@@ -1,16 +1,29 @@
 import React from 'react';
 
 import { Row, Col } from 'antd';
+import { navigate } from 'gatsby';
 import theme from '../theme';
 
 const Footer = () => (
   <footer style={{ textAlign: 'center', paddingBottom: theme.spacing.medium }}>
-    <a style={{ marginRight: theme.spacing.small }} href="mailto:contactdemix@gmail.com">Contact Us</a>
-    &copy; Copyright
-    {' '}
-    {(new Date()).getFullYear()}
-    {' '}
-    unmix
+    <div>
+      {' '}
+      <a onClick={() => navigate('/tos')}>Terms of use</a>
+    </div>
+    <div>
+      {' '}
+      <a onClick={() => navigate('/privacy')}>Privacy</a>
+    </div>
+    <div>
+      <a style={{ marginRight: theme.spacing.small }} href="mailto:contactdemix@gmail.com">Contact Us</a>
+    </div>
+    <div>
+      &copy; Copyright
+      {' '}
+      {(new Date()).getFullYear()}
+      {' '}
+      unmix
+    </div>
     <div>
       powered by
       {' '}
@@ -22,6 +35,7 @@ const Footer = () => (
       <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
       <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
     </form>
+
   </footer>
 );
 

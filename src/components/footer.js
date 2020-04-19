@@ -7,22 +7,16 @@ import theme from '../theme';
 const Footer = () => (
   <footer style={{ textAlign: 'center', paddingBottom: theme.spacing.medium }}>
     <div>
-      {' '}
       <a onClick={() => navigate('/tos')}>Terms of use</a>
-    </div>
-    <div>
-      {' '}
-      <a onClick={() => navigate('/privacy')}>Privacy</a>
-    </div>
-    <div>
-      <a style={{ marginRight: theme.spacing.small }} href="mailto:contactdemix@gmail.com">Contact Us</a>
+      <a style={{ marginLeft: theme.spacing.small }} onClick={() => navigate('/privacy')}>Privacy</a>
+      <a style={{ marginLeft: theme.spacing.small, marginRight: theme.spacing.small }} href="mailto:contactdemix@gmail.com">Contact us</a>
     </div>
     <div>
       &copy; Copyright
       {' '}
-      {(new Date()).getFullYear()}
-      {' '}
       unmix
+      {' '}
+      {(new Date()).getFullYear()}
     </div>
     <div>
       powered by
